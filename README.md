@@ -7,4 +7,4 @@
 2. Locate the directory which contains this program on your computer.
 3. Run the program by python3 twitterCrawler.py
 4. Enter the information of your twitter account and wait. 
-5. A new csv file will be created in the same directory. :)
+5. A new csv file will be created in the same directory.  :)
