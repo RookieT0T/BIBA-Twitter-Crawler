@@ -12,3 +12,10 @@
 # Note of twitterCrawler.py:
 1. This program runs slowly and I am not sure what causes this issue.
 2. tweets.csv and commands.jpg are the files when I made my own test. You can ignore them.
+
+# dataAnalysis.py
+1. This is a program of analyzing the data collected from twitter. textBlob library is used.
+2. This program is not perfect and feel free to edit it.
+
+# Figure_1.png
+1. This is a pie chart automatically generated from dataAnalysis.py.
