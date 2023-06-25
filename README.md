@@ -16,6 +16,3 @@
 # dataAnalysis.py
 1. This is a program of analyzing the data collected from twitter. textBlob library is used.
 2. This program is not perfect and feel free to edit it.
-
-# Figure_1.png
-1. This is a pie chart automatically generated from dataAnalysis.py.
