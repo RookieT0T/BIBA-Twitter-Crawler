@@ -26,13 +26,12 @@ def callAPI(text):
         temperature = 0
       )
 
-
 positive = 0
 negative = 0
 neutral = 0
 total = 0
-# use your own api key
-openai.api_key = 'YOUR API KEY <- THIS SHOULD BE REPLACED'
+data = []
+openai.api_key = 'YOUR OWN API KEY'
 
 with open("./tweets_Job.csv", 'r') as file:
   csvreader = csv.reader(file)
@@ -42,35 +41,44 @@ with open("./tweets_Job.csv", 'r') as file:
     if(str(content) == 'Content'):
       continue
     text = str(content.replace('\n', ' '))
-    # print(text, '\n')
 
     # call openAI api
     completion = callAPI(text)
 
-    '''
-    # sentimental analysis and counting
-    blob = TextBlob(content)
-    sa = TextBlob(str(blob))
-    print(completion.choices[0].text.strip().lower())
-    '''
     if ("won't replace" in completion.choices[0].text.strip().lower()):
       positive += 1
+      tuple1 = (text, 'Will not replace')
+      data.append(tuple1)
     
     if ("will not replace" in completion.choices[0].text.strip().lower()):
       positive += 1
+      tuple2 = (text, 'Will not replace')
+      data.append(tuple2)
 
     if ("neutral" in completion.choices[0].text.strip().lower()):
       neutral += 1
+      tuple3 = (text, 'Neutral')
+      data.append(tuple3)
 
     if ("will replace" in completion.choices[0].text.strip().lower()):
       negative += 1
+      tuple4 = (text, 'Will replace')
+      data.append(tuple4)
 
-    # print out the count of each category
     '''
+    # print out the count of each category
     print(positive, '\n')
     print(neutral, '\n')
     print(negative, '\n')
-    '''
+    '''  
+    
+# write back to a csv file
+fileName = 'dataOpenAI.csv'
+with open(fileName, 'w', newline='') as csvfile:
+        header = ['Content', 'Result']
+        writer = csv.writer(csvfile)
+        writer.writerow(header)
+        writer.writerows(data)
 
 # data visualization
 categories = ['Will not replace', 'Neutral', 'Will replace']
